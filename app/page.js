@@ -1,11 +1,76 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import StatsSection from "./components/StatsSection";
 
 export default function Home() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      type: "bot",
+      text: "Hello! 👋 Welcome to EDEN Dental & Esthetics. How can I help you today?",
+    },
+  ]);
+  const [inputMessage, setInputMessage] = useState("");
+  const [pendingResponse, setPendingResponse] = useState(null);
+  const messagesEndRef = useRef(null);
+
+  const quickReplies = [
+    {
+      text: "Book Appointment",
+      response:
+        "Great! Please call us at 072002 10022 to book your appointment. Our team is ready to help you!",
+    },
+    {
+      text: "Services",
+      response:
+        "We offer General Dentistry (checkups, cleanings, fillings, root canal) and Cosmetic Treatments (teeth whitening, veneers, smile makeover). What interests you?",
+    },
+    {
+      text: "Location",
+      response:
+        "We're located at 445, Madhavaram Red Hills Rd, Moolakadai, Madhavaram, Chennai 600060. Easy to reach!",
+    },
+    {
+      text: "Working Hours",
+      response:
+        "Mon-Fri: 10 AM - 8 PM, Saturday: 10 AM - 6 PM, Sunday: 10 AM - 2 PM. We're here for you!",
+    },
+  ];
+
+  useEffect(() => {
+    if (pendingResponse) {
+      const timer = setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          { type: "bot", text: pendingResponse },
+        ]);
+        setPendingResponse(null);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [pendingResponse]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  const handleSendMessage = (text) => {
+    if (!text.trim()) return;
+
+    setMessages((prev) => [...prev, { type: "user", text }]);
+    setInputMessage("");
+
+    const reply = quickReplies.find(
+      (q) => q.text.toLowerCase() === text.toLowerCase()
+    );
+    const response = reply
+      ? reply.response
+      : "Thank you for your message! For specific inquiries, please call us at 072002 10022. Our team will be happy to assist you! 😊";
+    setPendingResponse(response);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 overflow-x-hidden w-full max-w-[100vw]">
@@ -980,6 +1045,119 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Chatbot */}
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
+        {isChatOpen && (
+          <div className="mb-4 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[80vh] bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden">
+            {/* Chat Header */}
+            <div className="bg-gradient-to-r from-[#7fb3a0] to-[#5a9179] p-4 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🦷</span>
+                </div>
+                <div>
+                  <p className="text-white font-bold">EDEN Dental</p>
+                  <p className="text-white/80 text-xs">Online now</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsChatOpen(false)}
+                className="text-white hover:bg-white/20 rounded-full p-2 transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Chat Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map((msg, idx) => (
+                <div
+                  key={idx}
+                  className={`flex ${
+                    msg.type === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
+                  <div
+                    className={`max-w-[80%] p-3 rounded-2xl ${
+                      msg.type === "user"
+                        ? "bg-gradient-to-r from-[#7fb3a0] to-[#5a9179] text-white"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    <p className="text-sm">{msg.text}</p>
+                  </div>
+                </div>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Quick Replies */}
+            <div className="p-3 border-t border-gray-200 bg-gray-50">
+              <div className="flex flex-wrap gap-2 mb-3">
+                {quickReplies.map((reply, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleSendMessage(reply.text)}
+                    className="text-xs bg-white border border-[#7fb3a0] text-[#7fb3a0] px-3 py-1.5 rounded-full hover:bg-[#7fb3a0] hover:text-white transition-colors"
+                  >
+                    {reply.text}
+                  </button>
+                ))}
+              </div>
+
+              {/* Input */}
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={inputMessage}
+                  onChange={(e) => setInputMessage(e.target.value)}
+                  onKeyPress={(e) =>
+                    e.key === "Enter" && handleSendMessage(inputMessage)
+                  }
+                  placeholder="Type a message..."
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-[#7fb3a0] text-sm"
+                />
+                <button
+                  onClick={() => handleSendMessage(inputMessage)}
+                  className="bg-gradient-to-r from-[#7fb3a0] to-[#5a9179] text-white p-2 rounded-full hover:shadow-lg transition-all w-10 h-10 flex items-center justify-center"
+                >
+                  ➤
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Chat Button */}
+        <button
+          onClick={() => setIsChatOpen(!isChatOpen)}
+          className="bg-gradient-to-r from-[#7fb3a0] to-[#5a9179] text-white w-16 h-16 rounded-full shadow-2xl hover:shadow-3xl transition-all flex items-center justify-center hover:scale-110"
+        >
+          {isChatOpen ? (
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+              <circle cx="12" cy="10" r="1.5" />
+              <circle cx="8" cy="10" r="1.5" />
+              <circle cx="16" cy="10" r="1.5" />
+            </svg>
+          )}
+        </button>
+      </div>
     </div>
   );
 }

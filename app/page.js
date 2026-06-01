@@ -347,7 +347,10 @@ export default function Home() {
                     alt="EDEN Dental Clinic"
                     fill
                     className="object-cover"
-                    style={{ objectPosition: "center 45%" }}
+                    style={{
+                      objectPosition: "center 50%",
+                      transform: "scale(1.2)",
+                    }}
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />

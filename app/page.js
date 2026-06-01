@@ -806,20 +806,20 @@ export default function Home() {
           </div>
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl mb-6 shadow-lg border border-gray-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-8">
+              <div className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 md:p-8 rounded-3xl mb-6 shadow-lg border border-gray-100">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 sm:mb-8">
                   Contact Information
                 </h3>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4 group">
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#7fb3a0] to-[#5a9179] rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-start gap-3 sm:gap-4 group">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 bg-gradient-to-br from-[#7fb3a0] to-[#5a9179] rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform">
                       📍
                     </div>
-                    <div>
-                      <p className="font-bold text-gray-900 mb-1 text-lg">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-gray-900 mb-1 text-base sm:text-lg">
                         Address
                       </p>
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                         445, Madhavaram Red Hills Rd,
                         <br />
                         Moolakadai, Madhavaram,
@@ -828,38 +828,42 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4 group">
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                  <div className="flex items-start gap-3 sm:gap-4 group">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform">
                       📞
                     </div>
-                    <div>
-                      <p className="font-bold text-gray-900 mb-1 text-lg">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-gray-900 mb-1 text-base sm:text-lg">
                         Phone
                       </p>
                       <a
                         href="tel:07200210022"
-                        className="text-[#7fb3a0] hover:text-[#5a9179] text-2xl font-bold block"
+                        className="text-[#7fb3a0] hover:text-[#5a9179] text-xl sm:text-2xl font-bold block break-all"
                       >
                         072002 10022
                       </a>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-xs sm:text-sm text-gray-600 mt-1">
                         Call us for appointments
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4 group">
-                    <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
+                  <div className="flex items-start gap-3 sm:gap-4 group">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-xl sm:text-2xl shadow-lg group-hover:scale-110 transition-transform">
                       ⏰
                     </div>
-                    <div>
-                      <p className="font-bold text-gray-900 mb-1 text-lg">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-gray-900 mb-1 text-base sm:text-lg">
                         Opening Hours
                       </p>
-                      <p className="text-gray-700">
+                      <p className="text-sm sm:text-base text-gray-700">
                         Monday - Friday: 10 AM - 8 PM
                       </p>
-                      <p className="text-gray-700">Saturday: 10 AM - 6 PM</p>
-                      <p className="text-gray-700">Sunday: 10 AM - 2 PM</p>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        Saturday: 10 AM - 6 PM
+                      </p>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        Sunday: 10 AM - 2 PM
+                      </p>
                     </div>
                   </div>
                 </div>

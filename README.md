@@ -1,4 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EDEN Dental & Esthetics Website
+
+A modern, elegant website for EDEN Dental & Esthetics, a premium dental clinic located in Madhavaram, Chennai.
+
+## Features
+
+- **Hero Section**: Eye-catching introduction with clinic name, tagline, and prominent "Book Appointment" CTA
+- **Why Choose Us**: Highlights 5.0 rating, women-owned status, experienced team, premium quality, and family-friendly atmosphere
+- **Services Section**:
+  - General Dentistry (checkups, cleanings, fillings, root canal, crowns, extractions)
+  - Cosmetic & Esthetic Treatments (teeth whitening, veneers, smile makeover, cosmetic bonding)
+- **Testimonials**: Real patient reviews showcasing the clinic's excellence
+- **About Section**: Clinic information and working hours
+- **Contact Section**: Full address, phone number, and embedded Google Maps
+- **Responsive Design**: Fully mobile-friendly and optimized for all devices
+
+## Design
+
+- **Color Palette**:
+  - Primary: Soft green (#7fb3a0) - calming and professional
+  - Accent: Rose gold (#d4a574) - premium and warm
+  - Background: Clean whites and soft grays
+- **Typography**: Inter font for modern, clean readability
+- **Style**: Premium, welcoming, trustworthy - appeals to women and families
+
+## Clinic Information
+
+- **Name**: EDEN Dental & Esthetics
+- **Location**: 445, Madhavaram Red Hills Rd, Moolakadai, Madhavaram, Chennai 600060
+- **Phone**: 072002 10022
+- **Rating**: 5.0 ★ (185 reviews)
+- **Opening Hours**: Opens 10:00 AM Monday
 
 ## Getting Started
 
@@ -9,28 +40,27 @@ npm run dev
 # or
 yarn dev
 # or
-pnpm dev
-# or
 bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To create a production build:
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 16.2.6
+- React 19.2.4
+- Tailwind CSS 4
+- Modern responsive design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2024 EDEN Dental & Esthetics. All rights reserved.
